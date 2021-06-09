@@ -3,6 +3,8 @@ import 'package:cycletour/model/user.dart';
 import 'package:cycletour/loginscreen.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
+import 'drawersector.dart';
+
 class MainScreen extends StatefulWidget {
   final User user;
 
@@ -69,9 +71,13 @@ class _MainScreenState extends State<MainScreen> {
       onWillPop: _onBackPressed,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Your Dashboard'),
+          title: Text(
+            'Your Dashboard',
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Colors.purple[100],
         ),
-        
+        drawer: DrawerSector(user: widget.user),
         body: Center(
           child: StaggeredGridView.count(
             crossAxisCount: 2,
@@ -79,11 +85,11 @@ class _MainScreenState extends State<MainScreen> {
             mainAxisSpacing: 10.0,
             padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             children: <Widget>[
-              homeText(Icons.graphic_eq, "Overall", 0xffed622b),
-              homeText(Icons.picture_in_picture, "Post", 0xff26cb3c),
-              homeText(Icons.attach_money, "Purchase Item", 0xff7297ff),
-              homeText(Icons.message, "Messaging", 0xffff3266),
-              homeText(Icons.settings, "MyProfile", 0xfff4c83f),
+              homeText(Icons.dashboard, "Overall", 0xffed622b),
+              homeText(Icons.explore, "Post", 0xff26cb3c),
+              homeText(Icons.shopping_bag, "Purchase Item", 0xff7297ff),
+              homeText(Icons.message, "Chat", 0xffff3266),
+              homeText(Icons.account_box, "My Profile", 0xfff4c83f),
               // progressDialog
             ],
             staggeredTiles: [
