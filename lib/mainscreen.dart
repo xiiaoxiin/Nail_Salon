@@ -1,9 +1,12 @@
+import 'package:cycletour/shop/purchaseitems.dart';
 import 'package:flutter/material.dart';
 import 'package:cycletour/model/user.dart';
 import 'package:cycletour/loginscreen.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'drawersector.dart';
+import 'feedscreen.dart';
+import 'userProfile.dart';
 
 class MainScreen extends StatefulWidget {
   final User user;
@@ -85,20 +88,41 @@ class _MainScreenState extends State<MainScreen> {
             mainAxisSpacing: 10.0,
             padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             children: <Widget>[
-              homeText(Icons.dashboard, "Overall", 0xffed622b),
-              homeText(Icons.explore, "Post", 0xff26cb3c),
-              homeText(Icons.shopping_bag, "Purchase Item", 0xff7297ff),
-              homeText(Icons.message, "Chat", 0xffff3266),
-              homeText(Icons.account_box, "My Profile", 0xfff4c83f),
+                InkWell(
+                  onTap:(){
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>FeedScreen(user: widget.user,curtab:0)),);
+                  },
+                  child:homeText(Icons.explore, "Post", 0xffed57373),
+                ),
+                InkWell(
+                  onTap:(){
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>PurchaseItems(user: widget.user)),);
+                  },
+                  child:homeText(Icons.shopping_bag, "Purchase Items", 0xff3f51b5),
+                ),
+                InkWell(
+                  onTap:(){
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>UserProfile(user: widget.user)),);
+                  },
+                  child:homeText(Icons.account_box, "My Profile", 0xff7e57c2),
+                ), 
+                InkWell(
+                  onTap:(){
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>LoginScreen()),);
+                  },
+                  child:homeText(Icons.logout, "Log Out Nailsalon App", 0xff00b8d4),
+                ), 
+              // homeText(Icons.dashboard, "Overall", 0xffed622b),
+              // homeText(Icons.explore, "Post", 0xff26cb3c),
+              // homeText(Icons.shopping_bag, "Purchase Item", 0xff7297ff),
+              // homeText(Icons.account_box, "My Profile", 0xfff4c83f),
               // progressDialog
             ],
             staggeredTiles: [
-              StaggeredTile.extent(2, 130.0),
-              StaggeredTile.extent(1, 150.0),
-              StaggeredTile.extent(1, 150.0),
-              StaggeredTile.extent(1, 150.0),
-              StaggeredTile.extent(1, 150.0),
-              StaggeredTile.extent(2, 200.0)
+              StaggeredTile.extent(2, 166.0),
+              StaggeredTile.extent(2, 166.0),
+              StaggeredTile.extent(2, 166.0),
+              StaggeredTile.extent(2, 166.0)
             ],
           ),
         ),

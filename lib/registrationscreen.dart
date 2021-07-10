@@ -160,10 +160,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                     _passwordb.isEmpty) {
                                   Fluttertoast.showToast(
                                       msg: "Email/Password is empty",
-                                      toastLength: Toast.LENGTH_SHORT,
-                                      gravity: ToastGravity.BOTTOM,
+                                      toastLength: Toast.LENGTH_LONG,
+                                      gravity: ToastGravity.CENTER,
                                       timeInSecForIosWeb: 1,
-                                      backgroundColor: Color.fromRGBO(191, 30, 46, 50),
+                                      backgroundColor: Colors.deepPurple,
                                       textColor: Colors.white,
                                       fontSize: 16.0);
                                   return;

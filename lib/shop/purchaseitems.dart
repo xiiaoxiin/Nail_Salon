@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import '../mainscreen.dart';
+import 'cart.dart';
+
 
 class Purchase extends StatelessWidget {
   @override
@@ -61,21 +64,23 @@ class _PurchaseItemsState extends State<PurchaseItems> {
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios),
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.push(context,MaterialPageRoute(builder: (content) => MainScreen()));
             },
           ),
-          actions: [
-            TextButton.icon(
-                onPressed: () => {_goToCart()},
-                icon: Icon(
-                  Icons.shopping_cart,
-                  color: Colors.white,
-                ),
-                label: Text(
-                  cartitem.toString(),
-                  style: TextStyle(color: Colors.white),
-                )),
-          ],
+        actions: [
+          TextButton.icon(
+              label: Text(cartitem.toString(),
+                  style: TextStyle(color: Colors.white)),
+              icon: Icon(Icons.shopping_cart_outlined, color: Colors.white),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (content) => Cart(user: widget.user)));
+
+                _loadProduct("all");
+              })
+        ],
           backgroundColor: Colors.purple[100],
         ),
         body: Center(
@@ -240,8 +245,7 @@ class _PurchaseItemsState extends State<PurchaseItems> {
     http.post(
         Uri.parse("https://lowtancqx.com/s269957/nailsalon/php/insert_cart.php"),
         body: {
-          // "name": name,
-          // "email": email,
+         "email":widget.user.email,
           "prid": prid
         }).then((response) {
       print(response.body);
@@ -269,9 +273,9 @@ class _PurchaseItemsState extends State<PurchaseItems> {
   }
 
   void _loadCart() {
-        http.post(Uri.parse("https://lowtancqx.com/s269957/nailsalon/php/loadcartitem.php"),
+        http.post(Uri.parse("https://lowtancqx.com/s269957/nailsalon/php/load_cart.php"),
         body: {
-         
+         "email": widget.user.email,
           }).then((response) {
       setState(() {
         cartitem = int.parse(response.body);
@@ -280,5 +284,5 @@ class _PurchaseItemsState extends State<PurchaseItems> {
     });
   }
 
-  _goToCart() async {}
+ 
 }

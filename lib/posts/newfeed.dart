@@ -22,7 +22,7 @@ class NewFeed extends StatefulWidget {
 class _NewFeedState extends State<NewFeed> {
   ProgressDialog pr;
   double screenHeight, screenWidth;
-  String pathAsset = 'assets/images/camera.png';
+  String pathAsset = 'assets/images/camerab.png';
   File _image;
   final _focus = FocusNode();
   bool _visible = true;

@@ -20,7 +20,7 @@ class _AddItemsState extends State<AddItems> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   //ProgressDialog pr;
   File _image;
-  String pathAsset = 'assets/images/camera.png';
+  String pathAsset = 'assets/images/camerab.png';
 
   @override
   Widget build(BuildContext context) {

@@ -152,7 +152,7 @@ class _LatestFeedState extends State<LatestFeed> {
                                               width: screenWidth / 0.5,
                                               child: CachedNetworkImage(
                                                 imageUrl:
-                                                    "https://lowtancqx.com/s269957/nailsalon/images/feed_pictures/${_userlistfeeds[index]['feedid']}.png",
+                                                    "https://lowtancqx.com/s269957/nailsalon/images/feed_pic/${_userlistfeeds[index]['feedid']}.jpeg",
                                                 fit: BoxFit.cover,
                                                 placeholder: (context, url) =>
                                                     new Transform.scale(

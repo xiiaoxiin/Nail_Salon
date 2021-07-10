@@ -227,10 +227,10 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_email.isEmpty || _password.isEmpty) {
       Fluttertoast.showToast(
           msg: "Email/Password is empty",
-          toastLength: Toast.LENGTH_SHORT,
+          toastLength: Toast.LENGTH_LONG,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
-          backgroundColor: Color.fromRGBO(191, 30, 40, 50),
+          backgroundColor: Colors.deepPurple,
           textColor: Colors.white,
           fontSize: 16.0);
       return;
@@ -250,10 +250,10 @@ class _LoginScreenState extends State<LoginScreen> {
       await prefs.setBool("rememberme", value);
       Fluttertoast.showToast(
           msg: "Preferences stored",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
-          backgroundColor: Color.fromRGBO(191, 30, 46, 50),
+          backgroundColor: Colors.deepPurple,
           textColor: Colors.white,
           fontSize: 16.0);
       return;
@@ -263,10 +263,10 @@ class _LoginScreenState extends State<LoginScreen> {
       await prefs.setBool("rememberme", value);
       Fluttertoast.showToast(
           msg: "Preferences removed",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
-          backgroundColor: Color.fromRGBO(191, 30, 46, 50),
+          backgroundColor: Colors.deepPurple,
           textColor: Colors.white,
           fontSize: 16.0);
       setState(() {
@@ -337,19 +337,19 @@ class _LoginScreenState extends State<LoginScreen> {
         Fluttertoast.showToast(
             msg:
                 "Password reset completed. Please check your email for further instruction",
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.TOP,
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.CENTER,
             timeInSecForIosWeb: 1,
-            backgroundColor: Color.fromRGBO(191, 30, 46, 50),
+            backgroundColor: Colors.deepPurple,
             textColor: Colors.white,
             fontSize: 16.0);
       } else {
         Fluttertoast.showToast(
             msg: "Password reset failed",
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.TOP,
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.CENTER,
             timeInSecForIosWeb: 1,
-            backgroundColor: Color.fromRGBO(191, 30, 46, 50),
+            backgroundColor: Colors.deepPurple,
             textColor: Colors.white,
             fontSize: 16.0);
       }

@@ -1,12 +1,12 @@
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
-import 'package:cycletour/drawersector.dart';
+import 'drawersector.dart';
+import 'package:cycletour/posts/latestfeed.dart';
+import 'package:cycletour/posts/yourfeed.dart';
 import 'package:flutter/material.dart';
-
+import 'package:convex_bottom_bar/convex_bottom_bar.dart'
+    show ConvexAppBar, TabItem, TabStyle;
 import 'mainscreen.dart';
-import 'model/user.dart';
-import 'posts/latestfeed.dart';
-import 'posts/newfeed.dart';
-import 'posts/yourfeed.dart';
+import 'package:cycletour/model/user.dart';
+import 'package:cycletour/posts/newfeed.dart';
 
 class FeedScreen extends StatefulWidget {
   final User user;
@@ -20,14 +20,18 @@ class FeedScreen extends StatefulWidget {
 class _FeedScreenState extends State<FeedScreen> {
   int currentIndex;
   List<Widget> tabchildren;
-  String maintitle = "  Posts";
+  String maintitle = "NailSalon Feed";
   TabController controller;
 
   @override
   void initState() {
     super.initState();
     currentIndex = widget.curtab;
-    tabchildren = [LatestFeed(), NewFeed(), YourFeed()];
+    tabchildren = [
+      LatestFeed(user: widget.user),
+      NewFeed(user: widget.user),
+      YourFeed(user: widget.user)
+    ];
   }
 
   @override
@@ -36,16 +40,14 @@ class _FeedScreenState extends State<FeedScreen> {
       onWillPop: _onBackPressed,
       child: Scaffold(
         bottomNavigationBar: ConvexAppBar(
-            style: TabStyle.reactCircle,
-            height: 50,
+            style: TabStyle.flip,
             initialActiveIndex: currentIndex, //
             onTap: onTabTapped,
-            activeColor: Colors.white,
             backgroundColor: Colors.purple[100],
             items: [
-              TabItem(icon: Icons.people),
-              TabItem(icon: Icons.filter_vintage),
-              TabItem(icon: Icons.emoji_events),
+              TabItem(title: "Latest Feed", icon: Icons.people),
+              TabItem(title: "New Feed", icon: Icons.camera),
+              TabItem(title: "Your Feed", icon: Icons.emoji_events),
             ]),
         appBar: AppBar(
           title: Text(
@@ -70,7 +72,7 @@ class _FeedScreenState extends State<FeedScreen> {
     setState(() {
       currentIndex = index;
       if (currentIndex == 0) {
-        maintitle = "Posts";
+        maintitle = "Latest Feed";
       }
       if (currentIndex == 1) {
         maintitle = "New Feed";
